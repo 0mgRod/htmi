@@ -34,9 +34,9 @@ python viewimg.py
 3. A PyQt5 window titled "HTML Viewer" will open, displaying the image rendered from the HTML file.
 
 ## Customization
-- Image and HTML file names: You can modify the variables in the image_to_html.py script to specify the desired file names for the input image and output HTML file.
+- Image and HTML file names: You can modify the variables in the `convert.py` script to specify the desired file names for the input image and output HTML file.
 
-- Styling: The generated HTML file uses inline styling to set the background color of each table cell. You can modify the CSS styles in the image_to_html.py script to customize the appearance of the rendered image.
+- Styling: The generated HTML file uses inline styling to set the background color of each table cell. You can modify the CSS styles in the `convert.py` script to customize the appearance of the rendered image.
 
 ## Limitations
 - Supported image formats: The scripts support PNG and JPEG image formats. Ensure that the image file you provide is in either of these formats.
