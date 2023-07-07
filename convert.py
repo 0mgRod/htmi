@@ -1,6 +1,7 @@
 import sys
 import os
 from PIL import Image
+from tkinter import Tk, filedialog
 
 
 def convert_image_to_html(image_path, output_path):
@@ -52,7 +53,7 @@ def convert_image_to_html(image_path, output_path):
 if __name__ == '__main__':
     # Get the absolute paths of the files
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    image_file = input("Enter the image file path: ")
+    image_file = filedialog.askopenfilename(title="Select image file", filetypes=[("PNG Image", "*.png"),("JPEG Image", "*.jpg")])
     if not os.path.isabs(image_file):
         image_file = os.path.join(current_dir, image_file)
 
