@@ -2,6 +2,7 @@ import sys
 import os
 from PIL import Image
 from tkinter import Tk, filedialog
+from tqdm import tqdm
 
 
 def convert_image_to_html(image_path, output_path):
@@ -24,6 +25,7 @@ def convert_image_to_html(image_path, output_path):
     html_content += '<table>\n'
 
     # Iterate over each pixel in the image
+    progress = tqdm(total=width * height, desc='Converting Image', unit='pixel')
     for y in range(height):
         html_content += '<tr>\n'
         for x in range(width):
@@ -38,7 +40,9 @@ def convert_image_to_html(image_path, output_path):
             html_content += '<td class="pixel" style="background-color: {}; width: 1px; height: 1px;"></td>\n'.format(
                 hex_color)
 
-        html_content += '</tr>\n'
+            progress.update(1)  # Update progress bar
+
+    progress.close()
 
     # Complete the HTML content
     html_content += '</table>\n'
@@ -53,7 +57,7 @@ def convert_image_to_html(image_path, output_path):
 if __name__ == '__main__':
     # Get the absolute paths of the files
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    image_file = filedialog.askopenfilename(title="Select image file", filetypes=[("PNG Image", "*.png"),("JPEG Image", "*.jpg")])
+    image_file = filedialog.askopenfilename(title="Select image file", filetypes=[("PNG Image", "*.png"), ("JPEG Image", "*.jpg")])
     if not os.path.isabs(image_file):
         image_file = os.path.join(current_dir, image_file)
 
